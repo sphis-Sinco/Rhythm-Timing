@@ -13,6 +13,7 @@ class NoteSpr extends FlxSprite
 	public var mytime:Float = 0;
 
 	public var hit:Bool = true;
+	public var myNoteHit:Bool = false;
 
 	public var missCallback:Void->Void = null;
 
@@ -22,6 +23,7 @@ class NoteSpr extends FlxSprite
 	{
 		super(x, y);
 		mytime = time;
+		ID = id;
 
 		frames = FlxAtlasFrames.fromSparrow('assets/images/Note_Assets.png', 'assets/images/Note_Assets.xml');
 		animation.addByPrefix('dummy', 'dummyNote');
@@ -35,24 +37,60 @@ class NoteSpr extends FlxSprite
 	{
 		super.update(elapsed);
 
+		switch (ID)
+		{
+			case 1:
+				myNoteHit = FlxG.keys.justReleased.SPACE;
+
+			default:
+				myNoteHit = false;
+		}
+
 		// thank you ninjamuffin99
 		y = (PlayState.strumlineY - (Conductor.songPosition - mytime) * (0.45 * FlxMath.roundDecimal(PlayState.SONG_JSON.speed, 2)));
 		
 		// miss system
 		if (y < PlayState.strumlineY && hit)
 		{
-			hit = false; // miss
-			missCallback();
-			desaturate();
+			missFunc();
+		}
+		else
+		{
+			if (y >= PlayState.strumlineY)
+			{
+				if (myNoteHit)
+				{
+					if (y >= PlayState.strumlineY - height * 1.5)
+					{
+						missFunc();
+					}
+					else if (y >= PlayState.strumlineY - height * 1)
+					{
+						// good popup
+						trace('good');
+					}
+					else if (y >= PlayState.strumlineY - height * 0.5)
+					{
+						// sick popup
+						trace('sick');
+					}
+				}
+			}
 		}
 
 		// outta bounds "system"
 		if (y <= -5000)
 		{
-			trace('outa bounds!');
 			destroy();
 		}
 	}
+	public function missFunc()
+	{
+		hit = false; // miss register
+		missCallback();
+		desaturate();
+	}
+
 	public function desaturate():Void
 	{
 		this.hsvShader.saturation = 0.2;
