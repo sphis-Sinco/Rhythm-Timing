@@ -10,6 +10,8 @@ class NoteSpr extends FlxSprite
 {
 	public var mytime:Float = 0;
 
+	public var hit:Bool = true;
+
 	override public function new(id:Int, time:Float)
 	{
 		super(x, y);
@@ -29,5 +31,15 @@ class NoteSpr extends FlxSprite
 
 		// thank you ninjamuffin99
 		y = (50 - (Conductor.songPosition - mytime) * (0.45 * FlxMath.roundDecimal(songSped, 2)));
+		// miss system
+		if (y < 50)
+			hit = false; // miss
+
+		// outta bounds "system"
+		if (y <= -5000)
+		{
+			trace('outa bounds!');
+			destroy();
+		}
 	}
 }
