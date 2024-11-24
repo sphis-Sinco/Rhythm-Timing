@@ -108,7 +108,7 @@ class PlayState extends MusicState
 
 	public function endSong()
 	{
-		trace('we done');
+		// end the song and go to the results state with the song stats info
 		endedSong = true;
 		FlxG.switchState(new ResultsState(SONG_STATS));
 	}
