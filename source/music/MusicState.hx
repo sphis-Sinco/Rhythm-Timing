@@ -57,5 +57,7 @@ class MusicState extends FlxState
 	public function beatHit():Void
 	{
 		// do literally nothing dumbass
+		// nuh uh
+		trace('Beat hit!');
 	}
 }

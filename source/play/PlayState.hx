@@ -1,11 +1,14 @@
 package play;
 
-import flixel.FlxState;
+import music.Conductor;
+import music.MusicState;
 
-class PlayState extends FlxState
+class PlayState extends MusicState
 {
 	override public function create()
 	{
+		Conductor.changeBPM(100);
+		
 		super.create();
 	}
 
