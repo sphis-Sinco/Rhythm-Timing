@@ -69,6 +69,7 @@ class PlayState extends MusicState
 		{
 			// TODO: Do something in this case? IDK.
 			trace('WARNING: PlayState instance already exists. This should not happen.');
+			FlxG.log.warn('PlayState instance already exists. This should not happen.');
 		}
 		instance = this;
 
