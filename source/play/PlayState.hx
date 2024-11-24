@@ -77,11 +77,17 @@ class PlayState extends MusicState
 		for (note in SONG_JSON.notes)
 		{
 			var newNote:NoteSpr = new NoteSpr(note.noteId, note.noteTime);
+			newNote.missCallback = noteMiss;
 			noteGrp.add(newNote);
 		}
 		add(noteGrp);
 		
 		super.create();
+	}
+
+	public function noteMiss()
+	{
+		SONG_STATS.misses++;
 	}
 
 	override public function update(elapsed:Float)

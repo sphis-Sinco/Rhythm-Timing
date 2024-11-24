@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
+import flixel.util.FlxSignal;
 import music.Conductor;
 import shaders.HSVShader;
 
@@ -12,6 +13,8 @@ class NoteSpr extends FlxSprite
 	public var mytime:Float = 0;
 
 	public var hit:Bool = true;
+
+	public var missCallback:Void->Void = null;
 
 	var hsvShader:HSVShader;
 
@@ -36,9 +39,10 @@ class NoteSpr extends FlxSprite
 		y = (PlayState.strumlineY - (Conductor.songPosition - mytime) * (0.45 * FlxMath.roundDecimal(PlayState.SONG_JSON.speed, 2)));
 		
 		// miss system
-		if (y < PlayState.strumlineY)
+		if (y < PlayState.strumlineY && hit)
 		{
 			hit = false; // miss
+			missCallback();
 			desaturate();
 		}
 
