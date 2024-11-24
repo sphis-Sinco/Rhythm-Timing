@@ -3,10 +3,19 @@ package play.results;
 import flixel.FlxG;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
+import flixel.util.FlxColor;
 import music.MusicState;
+import play.components.Stats;
 
 class ResultsState extends MusicState
 {
+	public var STATS:Stats = {
+		song: "Test",
+		beatsTotal: 100,
+		beatsHit: 50,
+		beatsMissed: 50
+	};
+
 	public var rank:String = 'perfect';
 
 	public var percent:Float = 0.0;
@@ -16,11 +25,21 @@ class ResultsState extends MusicState
 	public var percentTickGoal:Float = 5.0;
 
 	public var rankText:FlxText;
+	public var ranksubText:FlxText;
 	public var percentText:FlxText;
 
-	override public function new()
+	override public function new(gameplayStats:Stats)
 	{
+		trace(gameplayStats);
+
+		targpercent = (gameplayStats.beatsHit / gameplayStats.beatsTotal) * 100;
+		rankInit();
+        
 		rankText = new FlxText(10, 10, 0, "YOU DID...", 64);
+
+		ranksubText = new FlxText(10, rankText.y + rankText.height + 8, 0, "0%", 24);
+		ranksubText.visible = false;
+		ranksubText.color = FlxColor.GRAY;
 
 		percentText = new FlxText(0, 0, 0, "0%", 32);
 		percentText.screenCenter(XY);
@@ -29,9 +48,28 @@ class ResultsState extends MusicState
 		super();
 	}
 
+	public function rankInit()
+	{
+		trace(targpercent + '%');
+
+		if (targpercent == 100)
+			rank = 'perfect';
+		else if (targpercent >= 90)
+			rank = 'excellent';
+		else if (targpercent >= 80)
+			rank = 'great';
+		else if (targpercent >= 60)
+			rank = 'good';
+		else if (targpercent >= 10)
+			rank = 'bad';
+		else
+			rank = 'awful';
+	}
+
 	override public function create()
 	{
 		add(rankText);
+		add(ranksubText);
 		add(percentText);
 
 		super.create();
@@ -68,6 +106,8 @@ class ResultsState extends MusicState
 
 				rankText.text = "YOU DID " + rank.toUpperCase() + "!";
 				percentText.visible = false;
+				ranksubText.text = percentText.text;
+				ranksubText.visible = true;
 
 				reachedTarget = true;
 			}

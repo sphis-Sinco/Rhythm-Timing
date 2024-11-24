@@ -6,11 +6,14 @@ import flixel.text.FlxText;
 import music.Conductor;
 import music.MusicState;
 import music.Song;
+import play.components.Stats;
 import play.results.ResultsState;
 
 class PlayState extends MusicState
 {
 	public var SONG_JSON:Song;
+
+	public var SONG_STATS:Stats;
 
 	public var startedSong:Bool = false;
 	public var endedSong:Bool = false;
@@ -22,6 +25,13 @@ class PlayState extends MusicState
 		SONG_JSON = {
 			name: "Test",
 			bpm: 150
+		}
+
+		SONG_STATS = {
+			song: SONG_JSON.name,
+			beatsTotal: 0,
+			beatsHit: 0,
+			beatsMissed: 0
 		}
 
 		Conductor.mapBPMChanges(SONG_JSON);
@@ -73,6 +83,21 @@ class PlayState extends MusicState
 	{
 		trace('we done');
 		endedSong = true;
-		FlxG.switchState(new ResultsState());
+		FlxG.switchState(new ResultsState(SONG_STATS));
+	}
+
+	override public function beatHit()
+	{
+		if (startedSong)
+		{
+			SONG_STATS.beatsTotal++;
+
+			if (FlxG.random.bool(50))
+				SONG_STATS.beatsMissed++;
+			else
+				SONG_STATS.beatsHit++;
+		}
+
+		super.beatHit();
 	}
 }
