@@ -13,7 +13,7 @@ class PlayState extends MusicState
 	{
 		SONG = {
 			name: "Test",
-			bpm: 100
+			bpm: 150
 		}
 
 		Conductor.mapBPMChanges(SONG);
