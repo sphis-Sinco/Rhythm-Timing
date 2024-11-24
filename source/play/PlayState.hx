@@ -97,7 +97,7 @@ class PlayState extends MusicState
 		{
 			// check if the songPosition is more than or equal to the note time minus a note scrolling offset
 			// 5000 is note scrolling offset
-			if (Conductor.songPosition >= (note.noteTime -= 5000))
+			if ((Conductor.songPosition / 1000) >= (note.noteTime -= 5000))
 			{
 				var newNote:NoteSpr = new NoteSpr(note.noteId, note.noteTime);
 				add(newNote);
