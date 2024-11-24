@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Key.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="key idle0000" x="4" y="4" width="395" height="119"/>
+	<SubTexture name="key press fail0000" x="343" y="131" width="353" height="97" frameX="0" frameY="-1" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press fail0001" x="407" y="4" width="359" height="85" frameX="-6" frameY="-12" frameWidth="365" frameHeight="112"/>
+	<SubTexture name="key press fail0002" x="407" y="4" width="359" height="85" frameX="-6" frameY="-12" frameWidth="365" frameHeight="112"/>
+	<SubTexture name="key press fail0003" x="4" y="131" width="331" height="112" frameX="-19" frameY="0" frameWidth="365" frameHeight="112"/>
+	<SubTexture name="key press fail0004" x="4" y="131" width="331" height="112" frameX="-19" frameY="0" frameWidth="365" frameHeight="112"/>
+	<SubTexture name="key press fail0005" x="4" y="131" width="331" height="112" frameX="-19" frameY="0" frameWidth="365" frameHeight="112"/>
+	<SubTexture name="key press fail0006" x="4" y="131" width="331" height="112" frameX="-19" frameY="0" frameWidth="365" frameHeight="112"/>
+	<SubTexture name="key press fail0007" x="4" y="131" width="331" height="112" frameX="-19" frameY="0" frameWidth="365" frameHeight="112"/>
+	<SubTexture name="key press fail0008" x="4" y="131" width="331" height="112" frameX="-19" frameY="0" frameWidth="365" frameHeight="112"/>
+	<SubTexture name="key press fail0009" x="4" y="131" width="331" height="112" frameX="-19" frameY="0" frameWidth="365" frameHeight="112"/>
+	<SubTexture name="key press fail0010" x="4" y="131" width="331" height="112" frameX="-19" frameY="0" frameWidth="365" frameHeight="112"/>
+	<SubTexture name="key press fail0011" x="4" y="131" width="331" height="112" frameX="-19" frameY="0" frameWidth="365" frameHeight="112"/>
+	<SubTexture name="key press fail0012" x="4" y="131" width="331" height="112" frameX="-19" frameY="0" frameWidth="365" frameHeight="112"/>
+	<SubTexture name="key press fail0013" x="4" y="131" width="331" height="112" frameX="-19" frameY="0" frameWidth="365" frameHeight="112"/>
+	<SubTexture name="key press fail0014" x="4" y="131" width="331" height="112" frameX="-19" frameY="0" frameWidth="365" frameHeight="112"/>
+	<SubTexture name="key press perfect0000" x="343" y="131" width="353" height="97" frameX="0" frameY="-14" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press perfect0001" x="343" y="131" width="353" height="97" frameX="0" frameY="-14" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press perfect0002" x="4" y="251" width="326" height="126" frameX="-13" frameY="0" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press perfect0003" x="4" y="251" width="326" height="126" frameX="-13" frameY="0" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press perfect0004" x="4" y="251" width="326" height="126" frameX="-13" frameY="0" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press perfect0005" x="4" y="251" width="326" height="126" frameX="-13" frameY="0" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press perfect0006" x="4" y="251" width="326" height="126" frameX="-13" frameY="0" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press perfect0007" x="4" y="251" width="326" height="126" frameX="-13" frameY="0" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press perfect0008" x="4" y="251" width="326" height="126" frameX="-13" frameY="0" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press perfect0009" x="4" y="251" width="326" height="126" frameX="-13" frameY="0" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press perfect0010" x="4" y="251" width="326" height="126" frameX="-13" frameY="0" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press perfect0011" x="4" y="251" width="326" height="126" frameX="-13" frameY="0" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press perfect0012" x="4" y="251" width="326" height="126" frameX="-13" frameY="0" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press perfect0013" x="4" y="251" width="326" height="126" frameX="-13" frameY="0" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press perfect0014" x="4" y="251" width="326" height="126" frameX="-13" frameY="0" frameWidth="353" frameHeight="126"/>
+	<SubTexture name="key press prep0000" x="4" y="4" width="395" height="119" frameX="-2" frameY="-74" frameWidth="395" frameHeight="119"/>
+	<SubTexture name="key press prep0001" x="4" y="4" width="395" height="119" frameX="-2" frameY="-74" frameWidth="395" frameHeight="119"/>
+	<SubTexture name="key press prep0002" x="338" y="251" width="379" height="139" frameX="-10" frameY="-64" frameWidth="397" frameHeight="215"/>
+	<SubTexture name="key press prep0003" x="725" y="251" width="270" height="163" frameX="-58" frameY="-46" frameWidth="397" frameHeight="215"/>
+	<SubTexture name="key press prep0004" x="4" y="422" width="266" height="161" frameX="-59" frameY="-43" frameWidth="397" frameHeight="215"/>
+	<SubTexture name="key press prep0005" x="278" y="422" width="274" height="192" frameX="-52" frameY="-9" frameWidth="397" frameHeight="215"/>
+	<SubTexture name="key press prep0006" x="560" y="422" width="276" height="212" frameX="-52" frameY="0" frameWidth="397" frameHeight="215"/>
+	<SubTexture name="key press prep0007" x="4" y="642" width="363" height="110" frameX="-18" frameY="-85" frameWidth="397" frameHeight="215"/>
+	<SubTexture name="key press prep0008" x="375" y="642" width="374" height="115" frameX="-2" frameY="-100" frameWidth="397" frameHeight="215"/>
+	<SubTexture name="key press prep0009" x="4" y="765" width="395" height="108" frameX="0" frameY="-97" frameWidth="397" frameHeight="215"/>
+	<SubTexture name="key press prep0010" x="4" y="765" width="395" height="108" frameX="0" frameY="-97" frameWidth="397" frameHeight="215"/>
+	<SubTexture name="key press prep0011" x="407" y="765" width="358" height="117" frameX="-18" frameY="-87" frameWidth="397" frameHeight="215"/>
+	<SubTexture name="key press prep0012" x="407" y="765" width="358" height="117" frameX="-18" frameY="-87" frameWidth="397" frameHeight="215"/>
+	<SubTexture name="key press prep0013" x="407" y="765" width="358" height="117" frameX="-18" frameY="-87" frameWidth="397" frameHeight="215"/>
+	<SubTexture name="key press prep0014" x="407" y="765" width="358" height="117" frameX="-18" frameY="-87" frameWidth="397" frameHeight="215"/>
+</TextureAtlas>
