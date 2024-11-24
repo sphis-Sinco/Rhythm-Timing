@@ -25,7 +25,25 @@ class PlayState extends MusicState
 	{
 		SONG_JSON = {
 			name: "Test",
-			bpm: 150
+			bpm: 150,
+			notes: [
+				{
+					noteId: 1,
+					noteTime: 32
+				},
+				{
+					noteId: 2,
+					noteTime: 64
+				},
+				{
+					noteId: 3,
+					noteTime: 96
+				},
+				{
+					noteId: 4,
+					noteTime: 128
+				}
+			]
 		}
 
 		SONG_STATS = {
