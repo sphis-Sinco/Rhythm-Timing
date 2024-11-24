@@ -29,8 +29,8 @@ class PlayState extends MusicState
 
 	public static var strumlineY:Float = 50;
 
-	public var sickLine:FlxSprite = new FlxSprite().makeGraphic(640, 2);
-	public var goodLine:FlxSprite = new FlxSprite().makeGraphic(640, 2);
+	public var sickLine:FlxSprite = new FlxSprite().makeGraphic(640, 20);
+	public var goodLine:FlxSprite = new FlxSprite().makeGraphic(640, 20);
 
 	override public function new(song:String = 'Test')
 	{
