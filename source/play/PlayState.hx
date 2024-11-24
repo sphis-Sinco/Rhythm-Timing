@@ -92,7 +92,7 @@ class PlayState extends MusicState
 		{
 			SONG_STATS.beatsTotal++;
 
-			if (FlxG.random.bool(50))
+			if (FlxG.random.bool(25))
 				SONG_STATS.beatsMissed++;
 			else
 				SONG_STATS.beatsHit++;
