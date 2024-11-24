@@ -1,6 +1,8 @@
 package play;
 
 import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import music.Conductor;
@@ -12,7 +14,6 @@ import play.results.ResultsState;
 class PlayState extends MusicState
 {
 	public var SONG_JSON:Song;
-
 	public var SONG_STATS:Stats;
 
 	public var startedSong:Bool = false;
@@ -21,6 +22,8 @@ class PlayState extends MusicState
 	public var songPos:FlxText;
 
 	public var letGo:Bool = true;
+
+	public var key:FlxSprite;
 
 	override public function new()
 	{
@@ -45,6 +48,16 @@ class PlayState extends MusicState
 
 		Conductor.songPosition = 0;
 
+		var spritesheet = FlxAtlasFrames.fromSparrow('assets/images/key.png', 'assets/images/key.xml');
+		key = new FlxSprite();
+		key.frames = spritesheet;
+		key.animation.addByPrefix('idle', 'key idle');
+		key.animation.addByPrefix('prep', 'key press prep');
+		key.animation.addByPrefix('hit', 'key press perfect');
+		key.animation.addByPrefix('miss', 'key press fail');
+		key.animation.play('idle');
+		key.screenCenter();
+		
 		songPos = new FlxText(0, 0, 0, "Hello", 16);
 		super();
 	}
@@ -52,7 +65,7 @@ class PlayState extends MusicState
 	override public function create()
 	{
 		add(songPos);
-
+		add(key);
 		
 		super.create();
 	}
@@ -77,7 +90,7 @@ class PlayState extends MusicState
 		var songText:String = '' + timeLeft;
 
 		songPos.text = "Song Pos: " + songText;
-		
+
 		if (!FlxG.keys.pressed.SPACE && !letGo)
 			letGo = true;
 		
