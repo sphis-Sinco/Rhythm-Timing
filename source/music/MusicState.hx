@@ -66,6 +66,6 @@ class MusicState extends FlxState
 	{
 		// do literally nothing dumbass
 		// nuh uh
-		trace('Beat hit!');
+		// trace('Beat hit!');
 	}
 }
