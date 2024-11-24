@@ -16,7 +16,7 @@ import play.results.ResultsState;
 
 class PlayState extends MusicState
 {
-	public var SONG_JSON:Song;
+	public static var SONG_JSON:Song;
 	public var SONG_STATS:Stats;
 
 	public var startedSong:Bool = false;
@@ -24,9 +24,7 @@ class PlayState extends MusicState
 
 	public var songPos:FlxText;
 
-	public var strumlineY:Float = 50;
-
-	public static var instance:PlayState = null;
+	public static var strumlineY:Float = 50;
 
 	override public function new(song:String = 'Test')
 	{
@@ -65,13 +63,6 @@ class PlayState extends MusicState
 
 	override public function create()
 	{
-		if (instance != null)
-		{
-			// TODO: Do something in this case? IDK.
-			trace('WARNING: PlayState instance already exists. This should not happen.');
-			FlxG.log.warn('PlayState instance already exists. This should not happen.');
-		}
-		instance = this;
 
 		// add anything that should be added that was initalized in new()
 		add(songPos);

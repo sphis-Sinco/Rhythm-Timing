@@ -28,10 +28,10 @@ class NoteSpr extends FlxSprite
 		super.update(elapsed);
 
 		// thank you ninjamuffin99
-		y = (PlayState.instance.strumlineY - (Conductor.songPosition - mytime) * (0.45 * FlxMath.roundDecimal(PlayState.instance.SONG_JSON.speed, 2)));
+		y = (PlayState.strumlineY - (Conductor.songPosition - mytime) * (0.45 * FlxMath.roundDecimal(PlayState.SONG_JSON.speed, 2)));
 		
 		// miss system
-		if (y < PlayState.instance.strumlineY)
+		if (y < PlayState.strumlineY)
 			hit = false; // miss
 
 		// outta bounds "system"
