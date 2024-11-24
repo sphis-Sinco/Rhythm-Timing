@@ -6,6 +6,7 @@ import flixel.text.FlxText;
 import music.Conductor;
 import music.MusicState;
 import music.Song;
+import play.results.ResultsState;
 
 class PlayState extends MusicState
 {
@@ -16,7 +17,7 @@ class PlayState extends MusicState
 
 	public var songPos:FlxText;
 
-	override public function create()
+	override public function new()
 	{
 		SONG_JSON = {
 			name: "Test",
@@ -33,6 +34,11 @@ class PlayState extends MusicState
 		Conductor.songPosition = -5000;
 
 		songPos = new FlxText(0, 0, 0, "Hello", 16);
+		super();
+	}
+
+	override public function create()
+	{
 		add(songPos);
 
 		
@@ -50,7 +56,14 @@ class PlayState extends MusicState
 			FlxG.sound.music.resume();
 		}
 
-		var songText:String = '' + (FlxG.sound.music.length - (FlxMath.roundDecimal((Conductor.songPosition / 1000), 0)));
+		var musicLen:Float = FlxG.sound.music.length / 1000;
+		var timeLeft:Float = FlxMath.roundDecimal(musicLen - Conductor.songPosition / 1000, 0);
+
+		if (timeLeft > musicLen)
+			timeLeft = musicLen; // countdown time doesnt add to the length
+
+		var songText:String = '' + timeLeft;
+
 		songPos.text = "Song Pos: " + songText;
 		
 		super.update(elapsed);
@@ -60,5 +73,6 @@ class PlayState extends MusicState
 	{
 		trace('we done');
 		endedSong = true;
+		FlxG.switchState(new ResultsState());
 	}
 }
