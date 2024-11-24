@@ -4,6 +4,8 @@ import music.MusicState;
 
 class ResultsState extends MusicState
 {
+	public var rank:String = 'good';
+
 	override public function create()
 	{
 		super.create();
