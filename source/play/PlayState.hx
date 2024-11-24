@@ -26,7 +26,12 @@ class PlayState extends MusicState
 		Conductor.mapBPMChanges(SONG_JSON);
 		Conductor.changeBPM(SONG_JSON.bpm);
 
+		FlxG.sound.playMusic('assets/music/Test.wav', 1.0, false);
+		FlxG.sound.music.onComplete = endSong;
+		FlxG.sound.pause();
+
 		Conductor.songPosition = -5000;
+
 		songPos = new FlxText(0, 0, 0, "Hello", 16);
 		add(songPos);
 
@@ -42,14 +47,15 @@ class PlayState extends MusicState
 		if (Conductor.songPosition > 0 && !startedSong)
 		{
 			startedSong = true;
-			FlxG.sound.playMusic('assets/music/Test.wav', 1.0, false);
-			FlxG.sound.music.onComplete = endSong;
+			FlxG.sound.music.resume();
 		}
 
-		songPos.text = "Song Pos: " + FlxMath.roundDecimal(Conductor.songPosition / 1000, 0);
+		var songText:String = '' + (FlxG.sound.music.length - (FlxMath.roundDecimal((Conductor.songPosition / 1000), 0)));
+		songPos.text = "Song Pos: " + songText;
 		
 		super.update(elapsed);
 	}
+
 	public function endSong()
 	{
 		trace('we done');
