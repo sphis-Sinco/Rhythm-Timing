@@ -84,6 +84,12 @@ class NoteSpr extends FlxSprite
 		{
 			destroy();
 		}
+		setHue(0);
+		// hue stuff for popup
+		if (y >= PlayState.strumlineY - height * 0.5)
+			setHue(15);
+		else if (y >= PlayState.strumlineY - height * 1)
+			setHue(30);
 	}
 	public function missFunc()
 	{
