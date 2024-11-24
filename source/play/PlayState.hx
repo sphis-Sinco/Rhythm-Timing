@@ -20,6 +20,8 @@ class PlayState extends MusicState
 
 	public var songPos:FlxText;
 
+	public var letGo:Bool = true;
+
 	override public function new()
 	{
 		SONG_JSON = {
@@ -76,6 +78,9 @@ class PlayState extends MusicState
 
 		songPos.text = "Song Pos: " + songText;
 		
+		if (!FlxG.keys.pressed.SPACE && !letGo)
+			letGo = true;
+		
 		super.update(elapsed);
 	}
 
@@ -100,8 +105,9 @@ class PlayState extends MusicState
 		{
 			SONG_STATS.beatsTotal++;
 
-			if (FlxG.keys.pressed.SPACE)
+			if (FlxG.keys.pressed.SPACE && letGo)
 			{
+				letGo = false;
 				trace('hit');
 				SONG_STATS.beatsHit++;
 			}
