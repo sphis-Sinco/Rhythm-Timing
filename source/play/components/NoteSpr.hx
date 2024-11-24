@@ -1,7 +1,9 @@
 package play.components;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.math.FlxMath;
 import music.Conductor;
 
 class NoteSpr extends FlxSprite
@@ -24,9 +26,19 @@ class NoteSpr extends FlxSprite
 	{
 		super.update(elapsed);
 
-		this.y += elapsed * 1000;
-
-		if (Conductor.songPosition >= mytime)
+		if (this.y > FlxG.height)
+		{
+			active = false;
+			visible = false;
 			this.destroy();
+		}
+		else
+		{
+			visible = true;
+			active = true;
+		}
+
+		// thank you ninjamuffin99
+		this.y = (Conductor.songPosition - mytime) * (0.45 * FlxMath.roundDecimal(1, 2));
 	}
 }
