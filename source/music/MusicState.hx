@@ -1,9 +1,11 @@
 package music;
 
-import flixel.FlxState;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.addons.transition.TransitionData;
+import flixel.addons.ui.FlxUIState;
 import music.Conductor.BPMChangeEvent;
 
-class MusicState extends FlxState
+class MusicState extends FlxUIState
 {
 	// thankyouninjamuffin99
 	private var oldBeat:Float = 0;
@@ -14,11 +16,15 @@ class MusicState extends FlxState
 
 	override public function new()
 	{
+		transIn = FlxTransitionableState.defaultTransIn;
+		transOut = FlxTransitionableState.defaultTransOut;
+
 		super();
 	}
 
 	override public function create()
 	{
+
 		super.create();
 	}
 
