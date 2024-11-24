@@ -12,6 +12,7 @@ class PlayState extends MusicState
 	public var SONG_JSON:Song;
 
 	public var startedSong:Bool = false;
+	public var endedSong:Bool = false;
 
 	public var songPos:FlxText;
 
@@ -35,15 +36,23 @@ class PlayState extends MusicState
 
 	override public function update(elapsed:Float)
 	{
-		Conductor.songPosition += elapsed * 1000;
+		if (!endedSong)
+			Conductor.songPosition += elapsed * 1000;
+
 		if (Conductor.songPosition > 0 && !startedSong)
 		{
 			startedSong = true;
 			FlxG.sound.playMusic('assets/music/Test.wav', 1.0, false);
+			FlxG.sound.music.onComplete = endSong;
 		}
 
-		songPos.text = "Song Pos: " + FlxMath.roundDecimal(Conductor.songPosition * 1000, 0);
+		songPos.text = "Song Pos: " + FlxMath.roundDecimal(Conductor.songPosition / 1000, 0);
 		
 		super.update(elapsed);
+	}
+	public function endSong()
+	{
+		trace('we done');
+		endedSong = true;
 	}
 }
