@@ -21,10 +21,6 @@ class PlayState extends MusicState
 
 	public var songPos:FlxText;
 
-	public var letGo:Bool = true;
-
-	public var key:FlxSprite;
-
 	override public function new()
 	{
 		SONG_JSON = {
@@ -33,10 +29,7 @@ class PlayState extends MusicState
 		}
 
 		SONG_STATS = {
-			song: SONG_JSON.name,
-			beatsTotal: 0,
-			beatsHit: 0,
-			beatsMissed: 0
+			song: SONG_JSON.name
 		}
 
 		Conductor.mapBPMChanges(SONG_JSON);
@@ -48,16 +41,6 @@ class PlayState extends MusicState
 
 		Conductor.songPosition = 0;
 
-		var spritesheet = FlxAtlasFrames.fromSparrow('assets/images/Key.png', 'assets/images/Key.xml');
-		key = new FlxSprite();
-		key.frames = spritesheet;
-		key.animation.addByPrefix('idle', 'key idle', 24);
-		key.animation.addByPrefix('prep', 'key press prep', 24, false);
-		key.animation.addByPrefix('hit', 'key press perfect', 24, false);
-		key.animation.addByPrefix('miss', 'key press fail', 24, false);
-		key.animation.play('idle');
-		key.screenCenter();
-		
 		songPos = new FlxText(0, 0, 0, "Hello", 16);
 		super();
 	}
@@ -65,7 +48,6 @@ class PlayState extends MusicState
 	override public function create()
 	{
 		add(songPos);
-		add(key);
 		
 		super.create();
 	}
@@ -91,11 +73,6 @@ class PlayState extends MusicState
 
 		songPos.text = "Song Pos: " + songText;
 
-		if (!FlxG.keys.pressed.SPACE && !letGo)
-			letGo = true;
-		if (key.animation.finished)
-			key.animation.play('idle');
-		
 		super.update(elapsed);
 	}
 
@@ -104,35 +81,5 @@ class PlayState extends MusicState
 		trace('we done');
 		endedSong = true;
 		FlxG.switchState(new ResultsState(SONG_STATS));
-	}
-
-	override public function stepHit()
-	{
-		if (curStep % 2 == 0)
-			key.animation.play('prep');
-
-		super.stepHit();
-	}
-	
-	override public function beatHit()
-	{
-		if (startedSong && curBeat % 4 == 0) // do it every 1/4 beat to be easier
-		{
-			SONG_STATS.beatsTotal++;
-
-			if (FlxG.keys.pressed.SPACE && letGo)
-			{
-				letGo = false;
-				key.animation.play('hit');
-				SONG_STATS.beatsHit++;
-			}
-			else
-			{
-				key.animation.play('miss');
-				SONG_STATS.beatsMissed++;
-			}
-		}
-
-		super.beatHit();
 	}
 }

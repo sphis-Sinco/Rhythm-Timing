@@ -10,10 +10,7 @@ import play.components.Stats;
 class ResultsState extends MusicState
 {
 	public var STATS:Stats = {
-		song: "Test",
-		beatsTotal: 100,
-		beatsHit: 50,
-		beatsMissed: 50
+		song: "Test"
 	};
 
 	public var rank:String = 'perfect';
@@ -32,7 +29,7 @@ class ResultsState extends MusicState
 	{
 		trace(gameplayStats);
 
-		targpercent = (gameplayStats.beatsHit / gameplayStats.beatsTotal) * 100;
+		targpercent = (100 / 100) * 100;
 		rankInit();
         
 		rankText = new FlxText(10, 10, 0, "YOU DID...", 64);
