@@ -31,7 +31,7 @@ class PlayState extends MusicState
 		FlxG.sound.music.onComplete = endSong;
 		FlxG.sound.pause();
 
-		Conductor.songPosition = -5000;
+		Conductor.songPosition = 0;
 
 		songPos = new FlxText(0, 0, 0, "Hello", 16);
 		super();
