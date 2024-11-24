@@ -4,6 +4,7 @@ typedef Song =
 {
 	var name:String;
 	var bpm:Float;
+	var speed:Float;
 	var notes:Array<Note>;
 }
 

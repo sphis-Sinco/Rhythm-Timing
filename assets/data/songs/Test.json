@@ -1,6 +1,7 @@
 {
   "name": "Test",
   "bpm": 150,
+  "speed": 2.0,
   "notes": [
     {
       "noteId": 1,
