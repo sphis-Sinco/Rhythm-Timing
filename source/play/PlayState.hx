@@ -3,6 +3,7 @@ package play;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import haxe.Json;
@@ -24,6 +25,8 @@ class PlayState extends MusicState
 
 	public var songPos:FlxText;
 
+	public var noteGrp:FlxTypedGroup<NoteSpr> = new FlxTypedGroup<NoteSpr>();
+
 	public static var strumlineY:Float = 50;
 
 	override public function new(song:String = 'Test')
@@ -40,7 +43,10 @@ class PlayState extends MusicState
 
 		// set the base song stat info
 		SONG_STATS = {
-			song: SONG_JSON.name
+			song: SONG_JSON.name,
+			totalNotes: SONG_JSON.notes.length,
+			hits: 0,
+			misses: 0
 		}
 
 		// base stuff to get conductor workin
@@ -53,7 +59,7 @@ class PlayState extends MusicState
 		FlxG.sound.pause();
 
 		// set song position
-		Conductor.songPosition = -5000;
+		Conductor.songPosition = 0;
 
 		// init songPos Text
 		songPos = new FlxText(0, 0, 0, "Hello", 16);
@@ -71,8 +77,9 @@ class PlayState extends MusicState
 		for (note in SONG_JSON.notes)
 		{
 			var newNote:NoteSpr = new NoteSpr(note.noteId, note.noteTime);
-			add(newNote);
+			noteGrp.add(newNote);
 		}
+		add(noteGrp);
 		
 		super.create();
 	}
