@@ -51,10 +51,10 @@ class PlayState extends MusicState
 		var spritesheet = FlxAtlasFrames.fromSparrow('assets/images/Key.png', 'assets/images/Key.xml');
 		key = new FlxSprite();
 		key.frames = spritesheet;
-		key.animation.addByPrefix('idle', 'key idle');
-		key.animation.addByPrefix('prep', 'key press prep');
-		key.animation.addByPrefix('hit', 'key press perfect');
-		key.animation.addByPrefix('miss', 'key press fail');
+		key.animation.addByPrefix('idle', 'key idle', 24);
+		key.animation.addByPrefix('prep', 'key press prep', 24, false);
+		key.animation.addByPrefix('hit', 'key press perfect', 24, false);
+		key.animation.addByPrefix('miss', 'key press fail', 24, false);
 		key.animation.play('idle');
 		key.screenCenter();
 		
@@ -93,6 +93,8 @@ class PlayState extends MusicState
 
 		if (!FlxG.keys.pressed.SPACE && !letGo)
 			letGo = true;
+		if (key.animation.finished)
+			key.animation.play('idle');
 		
 		super.update(elapsed);
 	}
