@@ -6,8 +6,8 @@ import music.Conductor.BPMChangeEvent;
 class MusicState extends FlxState
 {
 	// thankyouninjamuffin99
-	private var lastBeat:Float = 0;
-	private var lastStep:Float = 0;
+	private var oldBeat:Float = 0;
+	private var oldStep:Float = 0;
 
 	private var curStep:Int = 0;
 	private var curBeat:Int = 0;
@@ -24,7 +24,7 @@ class MusicState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
-		var oldStep:Int = curStep;
+		oldStep = curStep;
 
 		updateCurStep();
 		updateBeat();
