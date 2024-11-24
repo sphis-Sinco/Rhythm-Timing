@@ -23,10 +23,17 @@ class PlayState extends MusicState
 
 	public var songPos:FlxText;
 
-	override public function new()
+	override public function new(song:String = 'Test')
 	{
 		// set song json
-		SONG_JSON = Json.parse(Assets.getText('assets/data/Test.json'));
+		try
+		{
+			SONG_JSON = Json.parse(Assets.getText('assets/data/songs/$song.json'));
+		}
+		catch (e)
+		{
+			SONG_JSON = Json.parse(Assets.getText('assets/data/songs/Test.json'));
+		}
 
 		// set the base song stat info
 		SONG_STATS = {
