@@ -56,7 +56,7 @@ class NoteSpr extends FlxSprite
 		}
 		else
 		{
-			if (y >= PlayState.strumlineY)
+			if (y >= PlayState.strumlineY && y <= FlxG.height - height)
 			{
 				if (myNoteHit)
 				{
