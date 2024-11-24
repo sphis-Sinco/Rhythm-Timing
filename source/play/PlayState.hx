@@ -86,16 +86,24 @@ class PlayState extends MusicState
 		FlxG.switchState(new ResultsState(SONG_STATS));
 	}
 
+	override public function stepHit()
+	{
+		if (curStep % 3 == 0)
+			trace('PRESS SPACE NOW');
+
+		super.stepHit();
+	}
+	
 	override public function beatHit()
 	{
 		if (startedSong)
 		{
 			SONG_STATS.beatsTotal++;
 
-			if (FlxG.random.bool(25))
-				SONG_STATS.beatsMissed++;
-			else
+			if (FlxG.keys.pressed.SPACE)
 				SONG_STATS.beatsHit++;
+			else
+				SONG_STATS.beatsMissed++;
 		}
 
 		super.beatHit();
