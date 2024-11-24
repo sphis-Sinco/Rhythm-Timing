@@ -22,11 +22,11 @@ class NoteSpr extends FlxSprite
 
 	override public function update(elapsed:Float)
 	{
+		super.update(elapsed);
+
 		this.y += elapsed * 1000;
 
 		if (Conductor.songPosition >= mytime)
 			this.destroy();
-
-		super.update(elapsed);
 	}
 }
