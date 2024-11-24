@@ -10,6 +10,7 @@ import music.Conductor;
 import music.MusicState;
 import music.Song;
 import openfl.Assets;
+import play.components.NoteSpr;
 import play.components.Stats;
 import play.results.ResultsState;
 
@@ -98,6 +99,8 @@ class PlayState extends MusicState
 			// 5000 is note scrolling offset
 			if (Conductor.songPosition >= (note.noteTime -= 5000))
 			{
+				var newNote:NoteSpr = new NoteSpr(note.noteId, note.noteTime);
+				add(newNote);
 				trace('Add note: ${note.noteId}');
 				SONG_JSON.notes.remove(note); // remove the note to prevent long trace log or dupe notes
 			}
