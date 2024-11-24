@@ -2,5 +2,5 @@ package music;
 
 typedef Song =
 {
-	var bpm:Int;
+	var bpm:Float;
 }
