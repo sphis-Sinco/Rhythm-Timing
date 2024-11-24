@@ -74,6 +74,7 @@ class NoteSpr extends FlxSprite
 						// sick popup
 						trace('sick');
 					}
+					destroy();
 				}
 			}
 		}
