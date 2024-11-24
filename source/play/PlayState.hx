@@ -89,7 +89,7 @@ class PlayState extends MusicState
 	override public function stepHit()
 	{
 		if (curStep % 3 == 0)
-			trace('PRESS SPACE NOW');
+			trace('PRESS SPACE NOW\ncurBeat: $curBeat');
 
 		super.stepHit();
 	}
@@ -101,9 +101,15 @@ class PlayState extends MusicState
 			SONG_STATS.beatsTotal++;
 
 			if (FlxG.keys.pressed.SPACE)
+			{
+				trace('hit');
 				SONG_STATS.beatsHit++;
+			}
 			else
+			{
+				trace('misseds');
 				SONG_STATS.beatsMissed++;
+			}
 		}
 
 		super.beatHit();
