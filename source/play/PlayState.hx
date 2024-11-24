@@ -48,7 +48,7 @@ class PlayState extends MusicState
 
 		Conductor.songPosition = 0;
 
-		var spritesheet = FlxAtlasFrames.fromSparrow('assets/images/key.png', 'assets/images/key.xml');
+		var spritesheet = FlxAtlasFrames.fromSparrow('assets/images/Key.png', 'assets/images/Key.xml');
 		key = new FlxSprite();
 		key.frames = spritesheet;
 		key.animation.addByPrefix('idle', 'key idle');
@@ -106,27 +106,27 @@ class PlayState extends MusicState
 
 	override public function stepHit()
 	{
-		if (curStep % 3 == 0)
-			trace('PRESS SPACE NOW\ncurBeat: $curBeat');
+		if (curStep % 2 == 0)
+			key.animation.play('prep');
 
 		super.stepHit();
 	}
 	
 	override public function beatHit()
 	{
-		if (startedSong)
+		if (startedSong && curBeat % 2 == 0) // do it every half beat to be easier
 		{
 			SONG_STATS.beatsTotal++;
 
 			if (FlxG.keys.pressed.SPACE && letGo)
 			{
 				letGo = false;
-				trace('hit');
+				key.animation.play('hit');
 				SONG_STATS.beatsHit++;
 			}
 			else
 			{
-				trace('misseds');
+				key.animation.play('miss');
 				SONG_STATS.beatsMissed++;
 			}
 		}
