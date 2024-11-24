@@ -114,7 +114,7 @@ class PlayState extends MusicState
 	
 	override public function beatHit()
 	{
-		if (startedSong && curBeat % 2 == 0) // do it every half beat to be easier
+		if (startedSong && curBeat % 3 == 0) // do it every 1/3 beat to be easier
 		{
 			SONG_STATS.beatsTotal++;
 
