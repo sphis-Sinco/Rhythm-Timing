@@ -5,9 +5,11 @@ import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
+import haxe.Json;
 import music.Conductor;
 import music.MusicState;
 import music.Song;
+import openfl.Assets;
 import play.components.Stats;
 import play.results.ResultsState;
 
@@ -23,29 +25,8 @@ class PlayState extends MusicState
 
 	override public function new()
 	{
-		// set song json (unhardcode please)
-		SONG_JSON = {
-			name: "Test",
-			bpm: 150,
-			notes: [
-				{
-					noteId: 1,
-					noteTime: 32
-				},
-				{
-					noteId: 2,
-					noteTime: 64
-				},
-				{
-					noteId: 3,
-					noteTime: 96
-				},
-				{
-					noteId: 4,
-					noteTime: 128
-				}
-			]
-		}
+		// set song json
+		SONG_JSON = Json.parse(Assets.getText('assets/data/Test.json'));
 
 		// set the base song stat info
 		SONG_STATS = {
