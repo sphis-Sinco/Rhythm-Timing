@@ -29,6 +29,9 @@ class PlayState extends MusicState
 
 	public static var strumlineY:Float = 50;
 
+	public var sickLine:FlxSprite = new FlxSprite().makeGraphic(640, 50);
+	public var goodLine:FlxSprite = new FlxSprite().makeGraphic(640, 50);
+
 	override public function new(song:String = 'Test')
 	{
 		// set song json
@@ -64,6 +67,11 @@ class PlayState extends MusicState
 		// init songPos Text
 		songPos = new FlxText(0, 0, 0, "Hello", 16);
 
+		// init lines
+		var exNote:NoteSpr = new NoteSpr(1, 0);
+		sickLine.y = strumlineY - exNote.height * 0.5;
+		goodLine.y = strumlineY - exNote.height * 1;
+
 		super();
 	}
 
@@ -72,6 +80,8 @@ class PlayState extends MusicState
 
 		// add anything that should be added that was initalized in new()
 		add(songPos);
+		add(sickLine);
+		add(goodLine);
 
 		// note adding
 		for (note in SONG_JSON.notes)
