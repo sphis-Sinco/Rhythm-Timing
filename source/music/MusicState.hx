@@ -24,6 +24,14 @@ class MusicState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
+		var oldStep:Int = curStep;
+
+		updateCurStep();
+		updateBeat();
+
+		if (oldStep != curStep && curStep > 0)
+			stepHit();
+        
 		super.update(elapsed);
 	}
 
