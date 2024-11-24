@@ -9,20 +9,21 @@ import music.Song;
 
 class PlayState extends MusicState
 {
-	public var SONG:Song;
+	public var SONG_JSON:Song;
+
 	public var startedSong:Bool = false;
 
 	public var songPos:FlxText;
 
 	override public function create()
 	{
-		SONG = {
+		SONG_JSON = {
 			name: "Test",
 			bpm: 150
 		}
 
-		Conductor.mapBPMChanges(SONG);
-		Conductor.changeBPM(SONG.bpm);
+		Conductor.mapBPMChanges(SONG_JSON);
+		Conductor.changeBPM(SONG_JSON.bpm);
 
 		Conductor.songPosition = -5000;
 		songPos = new FlxText(0, 0, 0, "Hello", 16);
