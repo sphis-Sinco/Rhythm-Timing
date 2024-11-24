@@ -4,19 +4,19 @@
   "notes": [
     {
       "noteId": 1,
-      "noteTime": 32
+      "noteTime": 1000
     },
     {
       "noteId": 2,
-      "noteTime": 64
+      "noteTime": 2000
     },
     {
       "noteId": 3,
-      "noteTime": 96
+      "noteTime": 3000
     },
     {
       "noteId": 4,
-      "noteTime": 128
+      "noteTime": 4000
     }
   ]
 }

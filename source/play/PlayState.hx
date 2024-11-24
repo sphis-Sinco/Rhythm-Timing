@@ -55,6 +55,7 @@ class PlayState extends MusicState
 
 		// init songPos Text
 		songPos = new FlxText(0, 0, 0, "Hello", 16);
+
 		super();
 	}
 
@@ -62,6 +63,13 @@ class PlayState extends MusicState
 	{
 		// add anything that should be added that was initalized in new()
 		add(songPos);
+
+		// note adding
+		for (note in SONG_JSON.notes)
+		{
+			var newNote:NoteSpr = new NoteSpr(note.noteId, note.noteTime);
+			add(newNote);
+		}
 		
 		super.create();
 	}
@@ -91,20 +99,6 @@ class PlayState extends MusicState
 		// song position text
 		var songText:String = '' + timeLeft;
 		songPos.text = "Song Pos: " + songText;
-
-		// note adding/checking
-		for (note in SONG_JSON.notes)
-		{
-			// check if the songPosition is more than or equal to the note time minus a note scrolling offset
-			// 5000 is note scrolling offset
-			if ((Conductor.songPosition / 1000) >= (note.noteTime -= 5000))
-			{
-				var newNote:NoteSpr = new NoteSpr(note.noteId, note.noteTime);
-				add(newNote);
-				trace('Add note: ${note.noteId}');
-				SONG_JSON.notes.remove(note); // remove the note to prevent long trace log or dupe notes
-			}
-		}
 
 		super.update(elapsed);
 	}

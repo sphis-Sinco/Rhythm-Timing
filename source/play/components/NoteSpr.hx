@@ -18,26 +18,16 @@ class NoteSpr extends FlxSprite
 		frames = FlxAtlasFrames.fromSparrow('assets/images/Note_Assets.png', 'assets/images/Note_Assets.xml');
 		animation.addByPrefix('dummy', 'dummyNote');
 		animation.play('dummy');
+		screenCenter();
 	}
 
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (this.y > FlxG.height)
-		{
-			active = false;
-			visible = false;
-		}
-		else
-		{
-			visible = true;
-			active = true;
-		}
+		var songSped = 2; // dummy variable
 
-		var songSped = 1; // dummy variable
-		
 		// thank you ninjamuffin99
-		this.y = (50 - (Conductor.songPosition - mytime) * (0.45 * FlxMath.roundDecimal(songSped, 2)));
+		y = (50 - (Conductor.songPosition - mytime) * (0.45 * FlxMath.roundDecimal(songSped, 2)));
 	}
 }
